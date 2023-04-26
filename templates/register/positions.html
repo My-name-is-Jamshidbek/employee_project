@@ -1,0 +1,28 @@
+{% extends 'register/base.html' %}
+{% block title %} Positions {% endblock title %}
+{% block content %} 
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">TITLE</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for position in positions %}
+      <tr>
+        <th scope="row">{{position.id}}</th>
+        <td>{{position.title}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <form action="" method="POST">
+    {% csrf_token %}
+    <div class="input-group mb-3">
+        <input type="text" class="form-control" name="position_name" placeholder="Enter the position and add" aria-label="Recipient's username" aria-describedby="button-addon2">
+        <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Button</button>
+    </div>
+  </form>
+{% endblock content %}
+  

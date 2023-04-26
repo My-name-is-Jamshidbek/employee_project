@@ -5,22 +5,24 @@
     {% csrf_token %}
     <div class="input-group mb-3">
         <span class="input-group-text" style="width: 100px;" id="basic-addon1">Full name</span>
-        <input type="text" class="form-control" placeholder="Full name" aria-label="Full name" name="fullname" aria-describedby="basic-addon1">
+        <input type="text" class="form-control" placeholder="Full name" aria-label="Full name" value="{{old_form.fullname}}" name="fullname" aria-describedby="basic-addon1">
     </div>
     <div class="input-group mb-3">
         <span class="input-group-text" style="width: 100px;" id="basic-addon1">EMP code</span>
-        <input type="text" class="form-control" placeholder="EMP code" aria-label="EMP code" name="emp_code" aria-describedby="basic-addon1">
+        <input type="text" class="form-control" placeholder="EMP code" value="{{old_form.emp_code}}" aria-label="EMP code" name="emp_code" aria-describedby="basic-addon1">
     </div>
     <div class="input-group mb-3">
         <span class="input-group-text" style="width: 100px;" id="basic-addon1">Phone</span>
-        <input type="text" class="form-control" placeholder="Phone" aria-label="Phone" name="mobile" aria-describedby="basic-addon1">
+        <input type="text" class="form-control" placeholder="Phone" aria-label="Phone" value="{{old_form.mobile}}" name="mobile" aria-describedby="basic-addon1">
     </div>
     <div class="input-group mb-3">
         <label class="input-group-text" style="width: 100px;" for="inputGroupSelect01">Position</label>
         <select class="form-select" id="inputGroupSelect01" name="position">
-            <option selected>Choose...</option>
+            <option selected value="{{old_form.position.id}}">{{old_form.position.title}}</option>
             {% for position in positions %}
+            {% if position.id != old_form.position.id %}
             <option value="{{ position.id }}">{{ position.title }}</option>
+            {% endif %}
             {% endfor %}
         </select>
     </div>
